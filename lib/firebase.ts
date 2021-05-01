@@ -1,5 +1,5 @@
-import fb from "firebase/app";
-import "firebase/auth";
+import fb from 'firebase/app';
+import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/analytics';
 
@@ -15,6 +15,6 @@ const config = {
   timestampsInSnapshots: true,
 };
 
-export const firebase = !fb.apps.length ? fb.initializeApp(config) : fb.app()
-export const firestore = firebase.firestore()
+export const firebase = !fb.apps.length ? fb.initializeApp(config) : fb.app();
+export const firestore = firebase.firestore();
 export const firebaseAuth = firebase.auth();
