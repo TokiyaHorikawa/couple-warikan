@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import fb from "firebase/app";
 import "firebase/auth";
 import 'firebase/firestore';
 import 'firebase/analytics';
@@ -15,13 +15,6 @@ const config = {
   timestampsInSnapshots: true,
 };
 
-// appの初期化
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-  firebase.analytics();
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-}
-
-export default firebase;
-export const firestore = firebase.firestore();
+export const firebase = !fb.apps.length ? fb.initializeApp(config) : fb.app()
+export const firestore = firebase.firestore()
 export const firebaseAuth = firebase.auth();
