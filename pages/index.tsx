@@ -1,11 +1,24 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
+import { firestore } from '@/lib/firebase'
 
 export default function Home({ allPostsData }) {
+
+  // firebase接続テスト
+  const get = async () => {
+    const docRef = await firestore.collection('users').doc('test').get();
+    console.log(docRef.data())
+  }
+  useEffect(() => {
+    get()
+  }, [])
+
+
   return (
     <Layout home>
       <Head>
