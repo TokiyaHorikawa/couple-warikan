@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
+import DemoWarikan from '@/components/DemoWarikan';
 
 export default function Home(): JSX.Element {
   return (
@@ -10,9 +11,9 @@ export default function Home(): JSX.Element {
       <section>
         <p>カップル割勘の使い方</p>
       </section>
-      <section>
-        <h2>デモ</h2>
-        <div>ここにログインせずに使えるカップル割勘</div>
+      <section className="grid justify-items-center p-3 bg-purple-200">
+        <h2 className="text-3xl">Demo</h2>
+        <DemoWarikan />
       </section>
     </Layout>
   );
