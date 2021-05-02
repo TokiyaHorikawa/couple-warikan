@@ -37,7 +37,7 @@ export default function Layout({ children }: Props): JSX.Element {
           <p>ログイン</p>
         </div>
       </header>
-      <main>{children}</main>
+      <main className="w-full">{children}</main>
     </div>
   );
 }
