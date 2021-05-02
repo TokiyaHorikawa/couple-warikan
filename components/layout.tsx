@@ -1,10 +1,7 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
-import utilStyles from '../styles/utils.module.css';
-import styles from './layout.module.css';
 
-export const siteTitle = 'カップル割勘';
+export const siteTitle = 'Couple Warikan';
 
 type Props = {
   children: ReactNode;
@@ -12,12 +9,12 @@ type Props = {
 
 export default function Layout({ children }: Props): JSX.Element {
   return (
-    <div className={styles.container}>
+    <div className="w-full grid justify-items-center">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="カップル割勘は複数人の割勘を簡単に行うためのwebサービスです"
         />
         <meta
           property="og:image"
@@ -28,18 +25,17 @@ export default function Layout({ children }: Props): JSX.Element {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        <>
-          <Image
-            priority
-            src="/images/profile.jpg"
-            className={utilStyles.borderCircle}
-            height={144}
-            width={144}
-            alt={siteTitle}
-          />
-          <h1 className="text-4xl">{siteTitle}</h1>
-        </>
+      <header className="w-full max-w-screen-lg flex flex-row p-3">
+        <p className="text-4xl">
+          {siteTitle}
+          <span role="img" aria-label="unicorn">
+            🦄
+          </span>
+        </p>
+        <div className="ml-auto flex flex-row">
+          <p className="mr-3">マイページ</p>
+          <p>ログイン</p>
+        </div>
       </header>
       <main>{children}</main>
     </div>
