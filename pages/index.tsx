@@ -1,55 +1,19 @@
-import { useEffect } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
-import Date from '../components/date';
-import { firestore } from '@/lib/firebase';
 
-export default function Home({ allPostsData }) {
-  // firebase接続テスト
-  const get = async () => {
-    const docRef = await firestore.collection('users').doc('test').get();
-    console.log(docRef.data());
-  };
-  useEffect(() => {
-    get();
-  }, []);
-
+export default function Home(): JSX.Element {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Home - {siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>カップル割勘</p>
+      <section>
+        <p>カップル割勘の使い方</p>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <p>{title}</p>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
+      <section>
+        <h2>デモ</h2>
+        <div>ここにログインせずに使えるカップル割勘</div>
       </section>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
 }
