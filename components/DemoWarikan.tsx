@@ -47,24 +47,27 @@ export default function DemoWarikan(): JSX.Element {
   }, [totalAPrice, totalBPrice, wariPaymentAmount]);
 
   return (
-    <div className="grid justify-items-center border-2 bg-white w-96">
+    <div className="grid justify-items-center bg-white w-96 p-3">
       <form onSubmit={handleSubmit(calcPrice)}>
         <div className="m-2">
           <h3 className="text-lg ">Aさんが支払った金額</h3>
           <ul>
             {aFieldArray.fields.map((_, index) => (
               <li key={`a-payments-${index}`}>
-                <div className="flex">
+                <div className="flex m-1">
                   <input
                     type="number"
+                    placeholder="金額を入力"
                     {...register(`aPayments.${index}.price` as const)}
                     className="form-input mt-1 block w-32 border-2 border-current"
                   />
-                  <Button
-                    type="button"
-                    onClick={() => aFieldArray.remove(index)}
-                    label="削除"
-                  />
+                  <span className="ml-2">
+                    <Button
+                      type="button"
+                      onClick={() => aFieldArray.remove(index)}
+                      label="削除"
+                    />
+                  </span>
                 </div>
               </li>
             ))}
@@ -80,17 +83,19 @@ export default function DemoWarikan(): JSX.Element {
           <ul>
             {bFieldArray.fields.map((_, index) => (
               <li key={`b-payments-${index}`}>
-                <div className="flex">
+                <div className="flex m-1">
                   <input
                     type="number"
                     {...register(`bPayments.${index}.price` as const)}
                     className="form-input mt-1 block w-32 border-2 border-current"
                   />
-                  <Button
-                    type="button"
-                    onClick={() => bFieldArray.remove(index)}
-                    label="削除"
-                  />
+                  <span className="ml-2">
+                    <Button
+                      type="button"
+                      onClick={() => bFieldArray.remove(index)}
+                      label="削除"
+                    />
+                  </span>
                 </div>
               </li>
             ))}

@@ -9,16 +9,12 @@ export default function Button({
   type,
   onClick,
   label = 'BUTTON',
-  className,
 }: PropsType): JSX.Element {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={
-        'py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700' +
-        className
-      }
+      className="py-1 px-2 rounded-lg text-purple-500 border-2 border-purple-500 hover:bg-purple-500 hover:text-white"
     >
       {label}
     </button>
