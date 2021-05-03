@@ -86,6 +86,7 @@ export default function DemoWarikan(): JSX.Element {
                 <div className="flex m-1">
                   <input
                     type="number"
+                    placeholder="金額を入力"
                     {...register(`bPayments.${index}.price` as const)}
                     className="form-input mt-1 block w-32 border-2 border-current"
                   />
