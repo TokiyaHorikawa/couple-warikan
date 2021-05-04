@@ -12,7 +12,12 @@ type LoginForm = {
   confirm_password: string;
 };
 export default function SignUp(): JSX.Element {
-  const { register, handleSubmit } = useForm<LoginForm>({
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm<LoginForm>({
     defaultValues: {
       name: '',
       email: '',
@@ -21,7 +26,7 @@ export default function SignUp(): JSX.Element {
     },
   });
 
-  const submit = (data) => {
+  const submit = (data: LoginForm) => {
     console.log(data);
   };
 
@@ -41,6 +46,8 @@ export default function SignUp(): JSX.Element {
                   name="name"
                   label="ユーザー名"
                   placeholder="ユーザー名を入力"
+                  errors={errors}
+                  options={{ required: 'ユーザー名は必須です' }}
                   register={register}
                 />
               </div>
@@ -50,6 +57,8 @@ export default function SignUp(): JSX.Element {
                   name="email"
                   label="Email"
                   placeholder="メールアドレスを入力"
+                  errors={errors}
+                  options={{ required: 'メールアドレスは必須です' }}
                   register={register}
                 />
               </div>
@@ -59,6 +68,8 @@ export default function SignUp(): JSX.Element {
                   name="password"
                   label="Password"
                   placeholder="パスワードを入力"
+                  errors={errors}
+                  options={{ required: 'パスワードは必須です' }}
                   register={register}
                 />
               </div>
@@ -68,6 +79,16 @@ export default function SignUp(): JSX.Element {
                   name="confirm_password"
                   label="パスワードの確認"
                   placeholder="パスワードの確認を行います"
+                  errors={errors}
+                  options={{
+                    required: 'パスワード確認は必須です',
+                    validate: {
+                      message: (v) =>
+                        v !== getValues('password')
+                          ? '上で入力したパスワードと値が異なります'
+                          : null,
+                    },
+                  }}
                   register={register}
                 />
               </div>

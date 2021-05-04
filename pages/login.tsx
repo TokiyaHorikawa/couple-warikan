@@ -10,7 +10,11 @@ type LoginForm = {
   password: string;
 };
 export default function Login(): JSX.Element {
-  const { register, handleSubmit } = useForm<LoginForm>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>({
     defaultValues: {
       email: '',
       password: '',
@@ -37,6 +41,8 @@ export default function Login(): JSX.Element {
                   name="email"
                   label="Email"
                   placeholder="メールアドレスを入力"
+                  errors={errors}
+                  options={{ required: 'メールアドレスは必須です' }}
                   register={register}
                 />
               </div>
@@ -46,6 +52,8 @@ export default function Login(): JSX.Element {
                   name="password"
                   label="Password"
                   placeholder="パスワードを入力"
+                  errors={errors}
+                  options={{ required: 'パスワード確認は必須です' }}
                   register={register}
                 />
               </div>
