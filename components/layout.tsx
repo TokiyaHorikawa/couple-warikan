@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 export const siteTitle = 'Couple Warikan';
 
@@ -9,7 +10,7 @@ type Props = {
 
 export default function Layout({ children }: Props): JSX.Element {
   return (
-    <div className="w-full grid justify-items-center">
+    <div className="w-full bg-gray-50 h-screen">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -25,16 +26,19 @@ export default function Layout({ children }: Props): JSX.Element {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className="w-full max-w-screen-lg flex flex-row p-3">
-        <p className="text-4xl">
-          {siteTitle}
-          <span role="img" aria-label="unicorn">
-            🦄
-          </span>
-        </p>
+      <header className="w-full max-w-screen-lg flex flex-row p-3 m-auto">
+        <Link href="/">
+          <button className="text-4xl">
+            {siteTitle}
+            <span role="img" aria-label="unicorn">
+              🦄
+            </span>
+          </button>
+        </Link>
         <div className="ml-auto flex flex-row">
-          <p className="mr-3">マイページ</p>
-          <p>ログイン</p>
+          <Link href="/login">
+            <button>ログイン</button>
+          </Link>
         </div>
       </header>
       <main className="w-full">{children}</main>
