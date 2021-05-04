@@ -6,14 +6,18 @@ import Input from '@/components/form/Input';
 import ButtonSubmit from '@/components/form/ButtonSubmit';
 
 type LoginForm = {
+  name: string;
   email: string;
   password: string;
+  confirm_password: string;
 };
-export default function Login(): JSX.Element {
+export default function SignUp(): JSX.Element {
   const { register, handleSubmit } = useForm<LoginForm>({
     defaultValues: {
+      name: '',
       email: '',
       password: '',
+      confirm_password: '',
     },
   });
 
@@ -24,13 +28,22 @@ export default function Login(): JSX.Element {
   return (
     <Layout>
       <Head>
-        <title>Login - {siteTitle}</title>
+        <title>Sign Up - {siteTitle}</title>
       </Head>
       <section>
         <div className="m-auto bg-white w-full max-w-sm rounded overflow-hidden shadow-lg">
-          <h2 className="text-2xl p-2 text-center">ログイン</h2>
+          <h2 className="text-2xl p-2 text-center">新規登録</h2>
           <form onSubmit={handleSubmit(submit)} className="w-full">
             <div className="flex flex-col">
+              <div className="pb-5 px-5">
+                <Input
+                  type="text"
+                  name="name"
+                  label="ユーザー名"
+                  placeholder="ユーザー名を入力"
+                  register={register}
+                />
+              </div>
               <div className="pb-5 px-5">
                 <Input
                   type="email"
@@ -49,14 +62,23 @@ export default function Login(): JSX.Element {
                   register={register}
                 />
               </div>
+              <div className="pb-5 px-5">
+                <Input
+                  type="password"
+                  name="confirm_password"
+                  label="パスワードの確認"
+                  placeholder="パスワードの確認を行います"
+                  register={register}
+                />
+              </div>
               <div className="p-5">
                 <ButtonSubmit type="submit" label="ログイン" />
               </div>
             </div>
           </form>
-          <Link href="/signup">
+          <Link href="/login">
             <p className="text-center mb-2 text-gray-500 hover:underline cursor-pointer">
-              -- 新しくアカウントを作る --
+              -- 既存のアカウントでログインする --
             </p>
           </Link>
         </div>
