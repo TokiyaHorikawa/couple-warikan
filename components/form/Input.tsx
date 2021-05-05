@@ -1,3 +1,4 @@
+import { memo } from 'react';
 type PropsType = {
   type?: 'text' | 'email' | 'password';
   name: string;
@@ -8,7 +9,7 @@ type PropsType = {
   options?: {};
 };
 
-export default function Input({
+function Input({
   type,
   name,
   label,
@@ -17,10 +18,6 @@ export default function Input({
   errors,
   options,
 }: PropsType): JSX.Element {
-  console.log({
-    errors,
-    name,
-  });
   return (
     <>
       <label htmlFor={label} className="left-2 transition-all bg-white px-1">
@@ -39,3 +36,4 @@ export default function Input({
     </>
   );
 }
+export default memo(Input);
