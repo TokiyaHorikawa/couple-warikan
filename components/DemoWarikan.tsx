@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
-import Button from '@/components/Button';
+import Button from '@/components/form/Button';
 
 type Payments = {
   aPayments: { price: number }[];
