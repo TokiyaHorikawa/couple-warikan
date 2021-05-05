@@ -12,3 +12,15 @@ export const signUp = async (
     });
   return userCredential;
 };
+
+export const login = async (
+  email: string,
+  password: string
+): Promise<AuthUserCredential | void> => {
+  const userCredential = await firebaseAuth
+    .signInWithEmailAndPassword(email, password)
+    .catch(({ code, message }) => {
+      alert(`${code}: ${message}`);
+    });
+  return userCredential;
+};

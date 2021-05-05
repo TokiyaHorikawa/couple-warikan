@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../components/layout';
+import { login } from '@/api/auth';
+import Layout, { siteTitle } from '@/components/layout';
 import Input from '@/components/form/Input';
 import ButtonSubmit from '@/components/form/ButtonSubmit';
 
@@ -21,8 +22,11 @@ export default function Login(): JSX.Element {
     },
   });
 
-  const submit = (data) => {
-    console.log(data);
+  const submit = async ({ email, password }: LoginForm) => {
+    // メールアドレスでログイン
+    const isSuccess = await login(email, password);
+    isSuccess && alert('ログイン成功');
+    // TODO: ログイン後の遷移
   };
 
   return (

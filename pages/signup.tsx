@@ -30,6 +30,8 @@ export default function SignUp(): JSX.Element {
   const submit = async ({ name, email, password }: LoginForm) => {
     // 新規アカウント作成
     const isSuccess = await signUpCreateUser({ name, email, password });
+    isSuccess && alert('サインアップ成功');
+    // TODO: サインアップ後の遷移先
   };
 
   return (
