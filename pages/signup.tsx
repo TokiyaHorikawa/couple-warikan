@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../components/layout';
+import { signUpCreateUser } from '@/api/users';
+import Layout, { siteTitle } from '@/components/layout';
 import Input from '@/components/form/Input';
 import ButtonSubmit from '@/components/form/ButtonSubmit';
 
@@ -26,8 +27,9 @@ export default function SignUp(): JSX.Element {
     },
   });
 
-  const submit = (data: LoginForm) => {
-    console.log(data);
+  const submit = async ({ name, email, password }: LoginForm) => {
+    // 新規アカウント作成
+    const isSuccess = await signUpCreateUser({ name, email, password });
   };
 
   return (
@@ -93,7 +95,7 @@ export default function SignUp(): JSX.Element {
                 />
               </div>
               <div className="p-5">
-                <ButtonSubmit type="submit" label="ログイン" />
+                <ButtonSubmit type="submit" label="新規登録" />
               </div>
             </div>
           </form>
