@@ -41,7 +41,7 @@ export default function Layout({ children }: Props): JSX.Element {
           </Link>
         </div>
       </header>
-      <main className="w-full">{children}</main>
+      <main className="w-full h-full">{children}</main>
     </div>
   );
 }

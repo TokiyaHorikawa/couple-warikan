@@ -47,7 +47,7 @@ export default function DemoWarikan(): JSX.Element {
   }, [totalAPrice, totalBPrice, wariPaymentAmount]);
 
   return (
-    <div className="grid justify-items-center bg-white w-96 p-3">
+    <div className="grid justify-items-center bg-white w-80 md:w-96 p-3">
       <form onSubmit={handleSubmit(calcPrice)}>
         <div className="m-2">
           <h3 className="text-lg ">Aさんが支払った金額</h3>
