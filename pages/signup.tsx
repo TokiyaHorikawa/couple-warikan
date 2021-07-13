@@ -39,7 +39,7 @@ export default function SignUp(): JSX.Element {
       <Head>
         <title>Sign Up - {siteTitle}</title>
       </Head>
-      <section>
+      <section className="h-full pt-32 bg-purple-100">
         <div className="m-auto bg-white w-full max-w-sm rounded overflow-hidden shadow-lg">
           <h2 className="text-2xl p-2 text-center">新規登録</h2>
           <form onSubmit={handleSubmit(submit)} className="w-full">

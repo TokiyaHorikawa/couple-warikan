@@ -34,7 +34,7 @@ export default function Login(): JSX.Element {
       <Head>
         <title>Login - {siteTitle}</title>
       </Head>
-      <section>
+      <section className="h-full pt-32 bg-purple-100">
         <div className="m-auto bg-white w-full max-w-sm rounded overflow-hidden shadow-lg">
           <h2 className="text-2xl p-2 text-center">ログイン</h2>
           <form onSubmit={handleSubmit(submit)} className="w-full">
