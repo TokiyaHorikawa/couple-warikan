@@ -5,13 +5,16 @@ import type { AuthUserCredential } from '@/lib/firebase';
 export async function signUp(
   email: string,
   password: string
-): Promise<AuthUserCredential | void> {
-  const userCredential = await firebaseAuth
-    .createUserWithEmailAndPassword(email, password)
-    .catch(({ code, message }) => {
-      alert(`${code}: ${message}`);
-    });
-  return userCredential;
+): Promise<AuthUserCredential> {
+  try {
+    const userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+      email,
+      password
+    );
+    return userCredential;
+  } catch ({ code, message }) {
+    alert(`${code}: ${message}`);
+  }
 }
 
 export async function login(
