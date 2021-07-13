@@ -1,26 +1,27 @@
-import { firebaseAuth, AuthUserCredential } from '@/lib/firebase';
+import { firebaseAuth } from '@/lib/firebase';
+import type { AuthUserCredential } from '@/lib/firebase';
 
 // Firebase Authを新規作成する
-export const signUp = async (
+export async function signUp(
   email: string,
   password: string
-): Promise<AuthUserCredential | void> => {
+): Promise<AuthUserCredential | void> {
   const userCredential = await firebaseAuth
     .createUserWithEmailAndPassword(email, password)
     .catch(({ code, message }) => {
       alert(`${code}: ${message}`);
     });
   return userCredential;
-};
+}
 
-export const login = async (
+export async function login(
   email: string,
   password: string
-): Promise<AuthUserCredential | void> => {
+): Promise<AuthUserCredential | void> {
   const userCredential = await firebaseAuth
     .signInWithEmailAndPassword(email, password)
     .catch(({ code, message }) => {
       alert(`${code}: ${message}`);
     });
   return userCredential;
-};
+}

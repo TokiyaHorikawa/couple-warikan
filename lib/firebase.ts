@@ -1,7 +1,6 @@
 import fb from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import 'firebase/analytics';
 
 // .env に設定した値を取得してる
 const config = {
@@ -22,6 +21,7 @@ export const firebaseAuth = firebase.auth();
 export const firestoreServerTimestamp = fb.firestore.FieldValue.serverTimestamp();
 
 // Type
+export type FirebaseUser = fb.User;
 export type Query = fb.firestore.Query;
 export type DocRef = fb.firestore.DocumentReference;
 export type QuerySnapshot = fb.firestore.QuerySnapshot;
